@@ -3,7 +3,7 @@ package data
 import "time"
 
 type Thread struct {
-	ID        int
+	Id        int
 	Uuid      string
 	Topic     string
 	UserId    int
@@ -17,4 +17,12 @@ type Post struct {
 	UserId    int
 	ThreadId  int
 	CreatedAt time.Time
+}
+
+func (thread *Thread) CreatedAtDate() string {
+	return thread.CreatedAt.Format("Jan 2, 2006 at 3:04pm")
+}
+
+func (post *Post) CreatedAtDate() string {
+	return post.CreatedAt.Format("Jan 2, 2006 at 3:04pm")
 }
