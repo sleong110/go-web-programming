@@ -6,6 +6,15 @@ import (
 	"github.com/sleong110/go-web-programming/ch2_chit_chat_app/data"
 )
 
+func login(w http.ResponseWriter, r *http.Request) {
+	t := parseTemplateFiles("login.layout", "public.navbar", "login")
+	t.Execute(w, nil)
+}
+
+func signup(w http.ResponseWriter, r *http.Request) {
+	generateHTML(w, nil, "login.layout", "public.navbar", "signup")
+}
+
 func authenticate(w http.ResponseWriter, r *http.Request) {
 	err := request.ParseForm()
 	user, err := data.UserByEmail(r.PostFormValue("email"))
